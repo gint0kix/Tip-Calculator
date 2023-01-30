@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webpack App</title>
+  <script defer src="bundlefb81ddd5836361f685be.js"></script></head>
+  <body>
+    <div id="container">
+      <div id="container-header">
+        <div>Name</div>
+        <div>Hours</div>
+        <div>Tips Owed</div>
+        <div> <img alt="menu_icon" id="menu"></div>
+       
+      </div>
+      
+    </div>
+    <form id="inputForm">
+      <div id="newPersonForm">
+        <label for="nameInput" id="nameLabel">
+          Name:
+          <input type="text" id="nameInput" required="true" />
+        </label>
+        <label for="hourInput" id="hourLabel">
+          Hours:
+          <input type="number" id="hourInput" required="true" />
+        </label>
+        <button type="button" id="addPerson-btn">+</button>
+      </div>
+
+      <div id="calculationForm">
+        <label for="totalTipsInput" id="totalTipsLabel">
+            Total Tips:
+            <input type="number" id="totalTipsInput">
+        </label>
+        <label for="totalHoursInput" id="totalHoursLabel">
+            Total Hours:
+            <input type="number" id="totalHoursInput">
+        </label>
+          
+        </div>
+       <div><button id="calculationSubmitBtn" type="button">Calculate</button>
+        <button id="clearFieldBtn" type="button">Clear</button>  
+      </div>
+        
+    </form>
+    <div id="menuModual"></div>
+  </body>
+</html>
