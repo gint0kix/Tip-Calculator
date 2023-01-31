@@ -61,7 +61,7 @@ body{
     column-gap: 3%;
 }
 #nameInput{
-    width:clamp(5.5rem, 5.5rem, 11vw);
+    width:clamp(5.5rem, 5.7rem, 12vw);
 }
 input[type="number"]{
     width:13vw;
