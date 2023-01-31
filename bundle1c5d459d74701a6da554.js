@@ -219,7 +219,7 @@ function calculateTips(mapOfPeople) {
     return personBGrossDecimal - personAGrossDecimal;
   });
   var remainingTips = TOTAL_TIPS - TotalNetTips;
-  var personArrLength = personArr.length - 1;
+  var personArrLength = personArr.length;
   var personIndex = 0;
   while (remainingTips != 0) {
     personArr[personIndex % personArrLength][1].netTips += 1;
@@ -284,7 +284,6 @@ function updateDisplay(mapOfPeople) {
   mapOfPeople.forEach(function (value, key) {
     var currentUserId = key;
     var currentUserTips = value.netTips;
-    console.log("Current User=".concat(currentUserId, " Tips=").concat(currentUserTips));
     var currentUserTipDiv = document.querySelector("[data-person-i-d='".concat(currentUserId, "'] .personTips"));
     currentUserTipDiv.textContent = "$".concat(currentUserTips);
   });
@@ -1128,4 +1127,4 @@ calculateButton.addEventListener('click', function (e) {
 
 /******/ })()
 ;
-//# sourceMappingURL=bundleb8a75841f714aabb7556.js.map
+//# sourceMappingURL=bundle1c5d459d74701a6da554.js.map
