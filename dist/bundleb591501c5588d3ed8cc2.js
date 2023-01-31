@@ -131,7 +131,7 @@ function addPerson(e, mapAppendingTo) {
     alert('Please Enter an hour value greator than 0');
     return;
   }
-  var newPersonObject = (0,_PersonObjectFactory__WEBPACK_IMPORTED_MODULE_0__["default"])(newPersonNameValue, newPersonHourValue);
+  var newPersonObject = (0,_PersonObjectFactory__WEBPACK_IMPORTED_MODULE_0__["default"])(newPersonNameValue, Number(newPersonHourValue));
   mapAppendingTo.set(newPersonObject.personID, newPersonObject);
   var newPersonComponent = (0,_components_PersonComponent__WEBPACK_IMPORTED_MODULE_1__["default"])(newPersonObject, mapAppendingTo);
   containerDisplay.appendChild(newPersonComponent);
@@ -163,6 +163,9 @@ function calculateTips(mapOfPeople) {
   var TOTAL_TIPS = document.getElementById('totalTipsInput').value;
   var TOTAL_EXPECTED_HOURS = Number(document.getElementById('totalHoursInput').value);
   var TOTAL_ACTUAL_HOURS = 0;
+  function truncateTwoSpaces(num) {
+    return Number(num.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]);
+  }
   var _iterator = _createForOfIteratorHelper(personMap.values()),
     _step;
   try {
@@ -175,15 +178,15 @@ function calculateTips(mapOfPeople) {
   } finally {
     _iterator.f();
   }
+  TOTAL_ACTUAL_HOURS = truncateTwoSpaces(TOTAL_ACTUAL_HOURS);
   if (TOTAL_ACTUAL_HOURS !== TOTAL_EXPECTED_HOURS) {
+    console.log("TOTAL_ACTUAL_HOURS = ".concat(TOTAL_ACTUAL_HOURS));
     return alert('Please Check Inputed Hours');
   }
   if (TOTAL_TIPS === "") {
     return alert('Please Enter Amount of Tips');
   }
-  function truncateTwoSpaces(num) {
-    return Number(num.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]);
-  }
+
   //Truncates anything past the 2nd decimal space
   var spaces = 2;
   var RATE_PER_HOUR = truncateTwoSpaces(TOTAL_TIPS / TOTAL_EXPECTED_HOURS);
@@ -219,7 +222,7 @@ function calculateTips(mapOfPeople) {
     return personBGrossDecimal - personAGrossDecimal;
   });
   var remainingTips = TOTAL_TIPS - TotalNetTips;
-  var personArrLength = personArr.length - 1;
+  var personArrLength = personArr.length;
   var personIndex = 0;
   while (remainingTips != 0) {
     personArr[personIndex % personArrLength][1].netTips += 1;
@@ -284,7 +287,6 @@ function updateDisplay(mapOfPeople) {
   mapOfPeople.forEach(function (value, key) {
     var currentUserId = key;
     var currentUserTips = value.netTips;
-    console.log("Current User=".concat(currentUserId, " Tips=").concat(currentUserTips));
     var currentUserTipDiv = document.querySelector("[data-person-i-d='".concat(currentUserId, "'] .personTips"));
     currentUserTipDiv.textContent = "$".concat(currentUserTips);
   });
@@ -1128,4 +1130,4 @@ calculateButton.addEventListener('click', function (e) {
 
 /******/ })()
 ;
-//# sourceMappingURL=bundleb8a75841f714aabb7556.js.map
+//# sourceMappingURL=bundleb591501c5588d3ed8cc2.js.map

@@ -2,19 +2,23 @@ export default function calculateTips(mapOfPeople) {
   let personMap = mapOfPeople;  
   let TOTAL_TIPS = document.getElementById('totalTipsInput').value;
   const TOTAL_EXPECTED_HOURS = Number(document.getElementById('totalHoursInput').value);
-  let TOTAL_ACTUAL_HOURS = 0;
+  let TOTAL_ACTUAL_HOURS = 0; 
+  
+  function truncateTwoSpaces(num) {
+    return Number(num.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]);
+  }
   for (let person of personMap.values()) {
     TOTAL_ACTUAL_HOURS += Number(person.hoursWorked);
   }
+  TOTAL_ACTUAL_HOURS = truncateTwoSpaces(TOTAL_ACTUAL_HOURS);
   if(TOTAL_ACTUAL_HOURS!==TOTAL_EXPECTED_HOURS){
+    console.log(`TOTAL_ACTUAL_HOURS = ${TOTAL_ACTUAL_HOURS}`);
     return alert('Please Check Inputed Hours');
   }
   if(TOTAL_TIPS===""){
     return alert('Please Enter Amount of Tips');
   }
-  function truncateTwoSpaces(num) {
-    return Number(num.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]);
-  }
+ 
   //Truncates anything past the 2nd decimal space
   let spaces = 2;
   const RATE_PER_HOUR = truncateTwoSpaces(TOTAL_TIPS / TOTAL_EXPECTED_HOURS);
@@ -42,9 +46,10 @@ export default function calculateTips(mapOfPeople) {
   });
 
   let remainingTips = TOTAL_TIPS - TotalNetTips;
-  const personArrLength = personArr.length - 1;
+  const personArrLength = personArr.length;
   let personIndex = 0;
   while (remainingTips != 0) {
+
     personArr[personIndex % personArrLength][1].netTips += 1;
     personIndex++;
     remainingTips--;

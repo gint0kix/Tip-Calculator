@@ -14,7 +14,7 @@ export default function addPerson(e,mapAppendingTo){
         alert('Please Enter an hour value greator than 0');
         return;
     }
-    const newPersonObject = createPersonObject(newPersonNameValue,newPersonHourValue);
+    const newPersonObject = createPersonObject(newPersonNameValue,Number(newPersonHourValue));
     mapAppendingTo.set(newPersonObject.personID,newPersonObject);
     const newPersonComponent = createPersonComponent(newPersonObject,mapAppendingTo);
     containerDisplay.appendChild(newPersonComponent);
